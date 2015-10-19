@@ -27,9 +27,11 @@
 *.out
 *.app
 
+build/
 build/*
 build/*/*
 
+data/
 data/*
 data/*/*
 data/*/*/*

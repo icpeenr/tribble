@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-/*
+
 #include <list>
 #include <vector>
 #include <map>
@@ -9,20 +9,19 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <math.h>
-*/
+
 //#include <windows.h>
 /*#include <gl\glew.h>
 #include <gl\gl.h>
 #include <gl\glu.h>
 #include "GL\glfw.h"
 */
+#include <GLFW/glfw3.h>
 
 
 #include <fstream>
 #include <sstream>
 #include <cerrno>
-
-//#include <GLFW/glfw3.h>
 
 
 //#pragma warning(push, 0)
