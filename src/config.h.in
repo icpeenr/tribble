@@ -1,0 +1,2 @@
+#define tribble_VERSION_MAJOR @tribble_VERSION_MAJOR@
+#define tribble_VERSION_MINOR @tribble_VERSION_MINOR@
