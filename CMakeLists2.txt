@@ -4,6 +4,8 @@ project(tribble)
 
 SET(CMAKE_BUILD_TYPE Debug)
 
+#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Ofast -std=c++11 -L/usr/local/lib -lglfw3 -pthread -lGLEW -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -Wunknown-pragmas -Wdelete-non-virtual-dtor")
+
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Ofast -std=c++11 -Wunknown-pragmas -Wdelete-non-virtual-dtor")
 
 # Enable debug symbols by default
@@ -60,19 +62,17 @@ find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h ${HEADER_SEARCH_PATH})
 # Find glfw library
 find_library(GLFW_LIBRARIES glfw3 ${LIBRARY_SEARCH_PATH})
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/Framework)
-add_subdirectory(${PROJECT_SOURCE_DIR}/Engine)
+file(GLOB ENGINE_SRC ${PROJECT_SOURCE_DIR}/Engine/*.cpp)
+file(GLOB FRAMEWORK_SRC ${PROJECT_SOURCE_DIR}/Framework/*.cpp)
 
-#file(GLOB SRCS_Framework ${PROJECT_SOURCE_DIR}/Framework/*.cpp)
-#file(GLOB HDRS_Framework ${PROJECT_SOURCE_DIR}/Framework/*.h)
+#add_library(Engine ${FRAMEWORK_SRC} ${ENGINE_SRC} )
 
-#add_library(${Framework} ${SRCS_Framework} ${HDRS_Framework})
+add_library(Engine ${ENGINE_SRC})
+add_library(Framework ${FRAMEWORK_SRC})
 
-#file(GLOB SRCS_Engine ${PROJECT_SOURCE_DIR}/Engine/*.cpp)
-#add_library(test ${SRCS_Framework}  ${SRCS_Engine})
+target_link_libraries(Engine Framework)
 
-target_link_libraries(${EXECUTABLE_NAME} project_Engine project_Framework)
-
+target_link_libraries(${EXECUTABLE_NAME} Engine Framework)
 
 # Set additional libs
 set( ADDITIONAL_LIBS 
